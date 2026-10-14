@@ -52,3 +52,6 @@ droide["codigo"]="DRO-002"
 droide["energia"]=85
 droide["activo"]=False
 print(f"droides:{droides}")
+#DELETE
+eliminado=droide.pop(2)
+print(f"droides: {droides}")
