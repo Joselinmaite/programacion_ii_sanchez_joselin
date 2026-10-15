@@ -45,4 +45,4 @@ print("=======ANTES DE RECARGAR========")
 androide17.mostrar_energia()
 androide17.recargar(100)
 print("=====DESPUES DE RECARGAR========")
-androide17.mostrar_energia
+androide17.mostrar_energia()
