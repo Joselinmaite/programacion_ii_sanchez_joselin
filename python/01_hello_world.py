@@ -1,5 +1,0 @@
-print("BIENVENIDO A MI ZPATERIA")
-print("HARRY POTTER")
-print("MATEO BURRO")
-print("REY BRUCTO")
-print("OLI TONTO")
