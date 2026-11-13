@@ -13,5 +13,13 @@
         <li><a href="{% url 'libro_list' %}">Ver Lista de Libros</a></li>
         <li><a href="{% url 'categoria_list' %}">Lista de Categorías</a></li>
     </ul>
+    
+     <form method="post" action=" {%url 'logout'%}">
+        {% csrf_token %}
+        <button type="submit">Cerrar Sesión</button>
+    </form>
+
+
+
 </body>
 </html>
