@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista De Libros</title>
+</head>
+<body>
+    <h1>Lista De Libros</h1>
+    {% if message %}
+    <ul>
+        {%for message in messages%}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <button>
+        <a href="{% url 'create_libro' %}">Crear Nuevo Libro</a>
+    </button>
+     <button>
+            <a href=" {% url 'home'%}"> Atrás</a>
+    </button>
+    <button>
+            <a href=" {% url 'categoria_list'%}"> Lista de Categorías</a>
+    </button>
+
+    <h2>Buscar Libros </h2>
+    <form method="GET">
+        <p>
+            <label for="pista">
+                Buscar por título, autor o categoria
+            </label>
+            <input
+                type="text"
+                id="pista"
+                name="pista"
+                value="{{pista}}">
+        </p>
+        <p>
+            <label for="categoria">
+                Categoria:
+            </label>
+                <select id="categoria_id" name="categoria_id">
+                <option value="">Todas las categorias</option>
+                {% for categoria in categorias %}
+                <option value="{{categoria.id}}"
+                {% if categoria_id == categoria.id|stringformat:"s"%}
+                    selected
+                {%endif%}
+                >{{categoria.nombre}}</option>
+                {%endfor%}
+            </select>
+        </p>
+            <button type="submit">Buscar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Fecha de Publicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+            <tr>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.autor }}</td>
+                <td>{{ libro.fecha_publicacion}}</td>
+                <td>
+                    <a href="{% url 'update_libro' libro.pk %}">Editar</a>
+                    
+                    {% if perms.catalogo.delete_libro %}
+                        <a href="{%url 'delete_libro' libro.pk %}">Eliminar</a>
+                    {% endif %}
+
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No hay libros disponibles.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        tfoot>
+            <tr>
+                <td colspan="3"> Total de Libros: {{libros|length}}</td>
+            </tr>
+    </table>
+</body>
+</html>
