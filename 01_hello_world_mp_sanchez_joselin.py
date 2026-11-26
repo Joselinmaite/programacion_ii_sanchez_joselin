@@ -1,0 +1,5 @@
+print("¡Hola, mundo!")
+print("ZAPATERIA PASOS FIRMES")
+print("SUCURSAL 1: CENTRO COMERCIAL")
+print("La zapateria ha lanzado una gran oferta de temporada.")
+print("Los vendedores estan listos para atender a los clientes...")
